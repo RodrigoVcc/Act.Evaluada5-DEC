@@ -6,11 +6,11 @@ section .data
 	len2 equ $-msg2
 	
 	;Inicializa los valores de los 2 numeros a dividir
-	num1 db 10
-	num2 db 2
+	num1 dd 10
+	num2 dd 2
 
 	;se inicializa el resultado en 0
-	res db 0
+	res dd 0
  segment .bss
 
  section .text
@@ -24,16 +24,16 @@ _start:
    
   division:
   	;Division
-        mov bl, [num2]
+        mov ebx, [num2]
         
-        mov ah, 0
-        mov al, [num1]
-        ;Junta el valor de al con ah y lo divide entre bl
-        div bl
+        mov edx, 0
+        mov eax, [num1]
+        ;Junta el valor de eax con edx y lo divide entre ebx
+        div ebx
 
         ;Suma el codigo ASCII del 0 para visualizar el resultado
-        add al, 48
-        mov [res], al
+        add eax, 48
+        mov [res], eax
 
      	ret
   mostrar:
